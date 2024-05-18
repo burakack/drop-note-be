@@ -1,0 +1,30 @@
+services:
+  database:
+    image: 'postgres:14'
+    ports:
+      - '5432:5432'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_DB=drop-note'
+    expose:
+      - '5432'
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - database
+    environment:
+      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/gym-app'
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'SPRING_JPA_HIBERNATE_DDL-AUTO=update'
+      - 'SPRING_JPA_SHOW-SQL=true'
+      - 'SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect'
+      - 'SPRING_SECURITY_JWT_TOKEN_SECRET-KEY=secret-key'
+      - 'SPRING_SECURITY_JWT_TOKEN_EXPIRE-LENGTH=300000'
+    expose:
+      - '8080'
