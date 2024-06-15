@@ -1,11 +1,6 @@
 package burak;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import lombok.RequiredArgsConstructor;
-import burak.model.AppUser;
-import burak.model.AppUserRole;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +11,12 @@ import burak.service.UserService;
 
 @SpringBootApplication
 @RequiredArgsConstructor
-public class JwtAuthServiceApp implements CommandLineRunner {
+public class DropNoteApp implements CommandLineRunner {
 
     final UserService userService;
 
     public static void main(String[] args) {
-        SpringApplication.run(JwtAuthServiceApp.class, args);
+        SpringApplication.run(DropNoteApp.class, args);
     }
 
     @Bean

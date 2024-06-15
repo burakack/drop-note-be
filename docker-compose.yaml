@@ -18,7 +18,7 @@ services:
     depends_on:
       - database
     environment:
-      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/gym-app'
+      - 'SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/drop-note'
       - 'POSTGRES_USER=postgres'
       - 'POSTGRES_PASSWORD=postgres'
       - 'SPRING_JPA_HIBERNATE_DDL-AUTO=update'

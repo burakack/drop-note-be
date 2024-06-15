@@ -61,6 +61,7 @@ public class NoteController {
         } else {
             noteService.deleteNoteById(noteDto.getId());
         }
+
     }
 
     @PutMapping("update-note")

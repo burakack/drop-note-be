@@ -12,7 +12,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <start-class>burak.JwtAuthServiceApp</start-class>
+        <start-class>burak.DropNoteApp</start-class>
     </properties>
 
     <parent>
@@ -117,7 +117,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>burak.JwtAuthServiceApp</mainClass>
+                    <mainClass>burak.DropNoteApp</mainClass>
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
