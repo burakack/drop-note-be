@@ -85,6 +85,13 @@ public class FriendshipController {
             @ApiParam("FriendshipDto") @RequestBody FriendshipRequestDto friendshipDto, HttpServletRequest req) {
         friendshipService.removeFriendRequest(friendshipDto.getOtherUserId(), req.getRemoteUser());
     }
-
-
+    @GetMapping("user-friendships/{username}")
+    @ApiOperation(value = "${FriendshipController.userFriendships}")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Something went wrong"),
+            @ApiResponse(code = 403, message = "Access denied")})
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public Set<Friendship> userFriendships(@PathVariable String username) {
+        return friendshipService.getFriendships(username);
+    }
 }

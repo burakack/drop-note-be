@@ -1,6 +1,7 @@
 package burak.controller;
 
 import burak.dto.NoteDto;
+import burak.dto.UserDataDTO;
 import burak.dto.UserUpdateDto;
 import burak.model.AppUser;
 import burak.model.Note;
@@ -91,8 +92,6 @@ public class NoteController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public void likeNote(
             @ApiParam("NoteDto") @RequestBody NoteDto noteDto, HttpServletRequest req) {
-
-
         noteService.likeNoteById(noteDto.getId(), req.getRemoteUser());
     }
 
@@ -148,5 +147,16 @@ public class NoteController {
     public Set<Note> getMyNotes(HttpServletRequest req) {
         return noteService.getMyNotes(req.getRemoteUser());
     }
+
+    @GetMapping("get-user-notes/{username}")
+    @ApiOperation(value = "${NoteController.getUserNotes}")
+    @ApiResponses(value = {
+            @ApiResponse(code = 400, message = "Something went wrong"),
+            @ApiResponse(code = 403, message = "Access denied")})
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public Set<Note> getUserNotes(@ApiParam("Username") @PathVariable String username) {
+        return noteService.getUserNotes(username);
+    }
+
 
 }
