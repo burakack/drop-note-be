@@ -95,7 +95,7 @@
             <!-- JSON Web Token Support -->
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <version>0.12.5</version>
         </dependency>
         <dependency>
             <!-- Model Mapper -->
