@@ -3,8 +3,6 @@ package burak.dto;
 import burak.model.AppUser;
 import lombok.*;
 
-import javax.persistence.*;
-
 
 @Setter
 

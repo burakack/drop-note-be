@@ -1,27 +1,20 @@
 package burak.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import burak.dto.UserDataDTO;
+import burak.dto.UserResponseDTO;
 import burak.dto.UserUpdateDto;
-import burak.model.AppUserRole;
-import lombok.RequiredArgsConstructor;
 import burak.model.AppUser;
+import burak.model.AppUserRole;
+import burak.service.UserService;
+import io.swagger.annotations.*;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
-import io.swagger.annotations.Authorization;
-import burak.dto.UserDataDTO;
-import burak.dto.UserResponseDTO;
-import burak.service.UserService;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +30,11 @@ public class UserController {
 
     @PostMapping("/signin")
     @ApiOperation(value = "${UserController.signin}")
-    @ApiResponses(value = {//
+    @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Something went wrong"), //
             @ApiResponse(code = 422, message = "Invalid username/password supplied")})
-    public String login(//
-                        @ApiParam("Signup User") @RequestBody UserDataDTO user) {
+    public String login(
+            @ApiParam("Signup User") @RequestBody UserDataDTO user) {
         if (user.getUsername() == null || user.getPassword() == null) {
             throw new IllegalArgumentException("Username and password are required");
         }
@@ -74,6 +67,7 @@ public class UserController {
         user.setUsername(req.getRemoteUser());
         return userService.editUserInformation(user);
     }
+
     @PostMapping("/upload-user-image")
     @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
     @ApiOperation(value = "${UserController.upload-user-image}", authorizations = {@Authorization(value = "apiKey")})
@@ -82,7 +76,7 @@ public class UserController {
             @ApiResponse(code = 403, message = "Access denied"),
             @ApiResponse(code = 422, message = "Username is already in use")})
     public ResponseEntity uploadUserImage(HttpServletRequest req) {
-        userService.getUserInformationByUsername( req.getRemoteUser());
+        userService.getUserInformationByUsername(req.getRemoteUser());
         UserUpdateDto user = new UserUpdateDto();
         user.setUsername(req.getRemoteUser());
         userService.uploadUserImage(user);

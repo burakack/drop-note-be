@@ -1,11 +1,12 @@
 package burak.service;
 
-import javax.servlet.http.HttpServletRequest;
-
 import burak.dto.UserUpdateDto;
+import burak.exception.CustomException;
+import burak.model.AppUser;
 import burak.repository.ForgotPasswordRepository;
+import burak.repository.UserRepository;
+import burak.security.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,11 +14,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import burak.exception.CustomException;
-import burak.model.AppUser;
-import burak.repository.UserRepository;
-import burak.security.JwtTokenProvider;
-
+import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Optional;

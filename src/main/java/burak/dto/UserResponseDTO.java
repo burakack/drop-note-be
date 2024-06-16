@@ -1,12 +1,10 @@
 package burak.dto;
 
-import java.util.List;
-import java.util.Set;
-
-import burak.model.Note;
+import burak.model.AppUserRole;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import burak.model.AppUserRole;
+
+import java.util.List;
 
 @Data
 public class UserResponseDTO {

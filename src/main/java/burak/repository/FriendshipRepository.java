@@ -1,7 +1,6 @@
 package burak.repository;
 
 import burak.model.Friendship;
-import burak.model.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;

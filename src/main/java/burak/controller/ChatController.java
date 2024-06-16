@@ -12,10 +12,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +33,9 @@ public class ChatController {
     public void processMessage(@Payload MessageDto chatMessage, HttpServletRequest req) {
 
 
-        AppUser user= userService.getUserInformationByUsername(req.getRemoteUser());
+        AppUser user = userService.getUserInformationByUsername(req.getRemoteUser());
 
-        ChatMessage savedMsg = new ChatMessage( user.getId(), chatMessage.getRecipientId(), chatMessage.getContent());
+        ChatMessage savedMsg = new ChatMessage(user.getId(), chatMessage.getRecipientId(), chatMessage.getContent());
 
         savedMsg = chatMessageService.save(savedMsg);
 
@@ -51,10 +49,11 @@ public class ChatController {
                 )
         );
     }
+
     @PreAuthorize("hasRole('ROLE_USER')")
     @GetMapping("/messages/{senderId}/{recipientId}")
     public ResponseEntity<List<ChatMessage>> findChatMessages(@PathVariable Long recipientId, HttpServletRequest req) {
-        AppUser user= userService.getUserInformationByUsername(req.getRemoteUser());
+        AppUser user = userService.getUserInformationByUsername(req.getRemoteUser());
         return ResponseEntity
                 .ok(chatMessageService.findChatMessages(user.getId(), recipientId));
     }

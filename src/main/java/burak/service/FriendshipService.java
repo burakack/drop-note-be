@@ -93,8 +93,8 @@ public class FriendshipService {
 
         Friendship friendship = friendshipRepository.findByFriendRequesterIdAndFriendReceiverIdAndAcceptedIsFalse(otherUserId, user.getId());
 
-        if (friendship == null ) {
-            friendship = friendshipRepository.findByFriendRequesterIdAndFriendReceiverIdAndAcceptedIsFalse(user.getId(), otherUserId );
+        if (friendship == null) {
+            friendship = friendshipRepository.findByFriendRequesterIdAndFriendReceiverIdAndAcceptedIsFalse(user.getId(), otherUserId);
         }
 
         if (friendship == null || friendship.isAccepted()) {

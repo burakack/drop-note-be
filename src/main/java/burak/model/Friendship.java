@@ -28,7 +28,7 @@ public class Friendship implements Serializable {
     boolean accepted;
 
     @Column(columnDefinition = "boolean default false")
-    boolean deleted ;
+    boolean deleted;
 
     @Temporal(TemporalType.TIMESTAMP)
     Date date;

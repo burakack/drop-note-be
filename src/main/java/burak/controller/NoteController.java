@@ -1,23 +1,17 @@
 package burak.controller;
 
 import burak.dto.NoteDto;
-import burak.dto.UserDataDTO;
-import burak.dto.UserUpdateDto;
 import burak.model.AppUser;
 import burak.model.Note;
 import burak.service.NoteService;
 import burak.service.UserService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Not;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Set;
 
 @RestController

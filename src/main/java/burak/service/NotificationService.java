@@ -1,12 +1,11 @@
 package burak.service;
 
+import burak.model.Notification;
 import burak.repository.NotificationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import burak.model.Notification;
 
 import java.util.List;
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor

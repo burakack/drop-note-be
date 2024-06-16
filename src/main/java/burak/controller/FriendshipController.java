@@ -85,6 +85,7 @@ public class FriendshipController {
             @ApiParam("FriendshipDto") @RequestBody FriendshipRequestDto friendshipDto, HttpServletRequest req) {
         friendshipService.removeFriendRequest(friendshipDto.getOtherUserId(), req.getRemoteUser());
     }
+
     @GetMapping("user-friendships/{username}")
     @ApiOperation(value = "${FriendshipController.userFriendships}")
     @ApiResponses(value = {

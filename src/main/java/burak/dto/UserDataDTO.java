@@ -1,11 +1,11 @@
 package burak.dto;
 
-import java.util.List;
-
+import burak.model.AppUserRole;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import burak.model.AppUserRole;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
