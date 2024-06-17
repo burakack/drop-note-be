@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-app
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: spring-app
+  template:
+    metadata:
+      labels:
+        app: spring-app
+    spec:
+      containers:
+        - name: spring-app
+          image: 'drop-note-app:latest'
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/drop-note"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+            - name: SPRING_JPA_HIBERNATE_DDL-AUTO
+              value: "update"
+            - name: SPRING_JPA_SHOW-SQL
+              value: "true"
+            - name: SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT
+              value: "org.hibernate.dialect.PostgreSQLDialect"
+            - name: SPRING_SECURITY_JWT_TOKEN_SECRET-KEY
+              value: "secret-key"
+            - name: SPRING_SECURITY_JWT_TOKEN_EXPIRE-LENGTH
+              value: "300000"
