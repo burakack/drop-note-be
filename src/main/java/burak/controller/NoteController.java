@@ -152,5 +152,12 @@ public class NoteController {
         return noteService.getUserNotes(username);
     }
 
+    @GetMapping("test")
+    public String test() {
+        return "test işi";
+    }
+
+
+
 
 }
