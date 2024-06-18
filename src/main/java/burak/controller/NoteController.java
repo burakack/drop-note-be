@@ -154,7 +154,7 @@ public class NoteController {
 
     @GetMapping("test")
     public String test() {
-        return "test işi";
+        return "test işi degisiklik";
     }
 
 
